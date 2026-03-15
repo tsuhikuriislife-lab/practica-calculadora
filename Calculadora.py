@@ -12,10 +12,10 @@ while salir_programa == 0:
         choices=[
             "1.Figuras 2D",
             "2.Figuras 3D",
-            "3.Salir"
+            "3.Cerrar programa"
         ]).ask()
     
-    if menu == "1.Figuras 2D":
+    if menu == "1.Figuras 2D":  
         salir_2d = 0
         while salir_2d == 0:
             
@@ -24,7 +24,7 @@ while salir_programa == 0:
                 choices=[
                     "1.Poligonos",
                     "2.Figuras circulares",
-                    "3.Salir"
+                    "3.Salir al menu principal"
                 ]
             ).ask()
             
@@ -40,7 +40,7 @@ while salir_programa == 0:
                             "3.Triangulo",
                             "4.Triangulo rectangulo",
                             "5.Pentagono",
-                            "6.Salir"
+                            "6.Salir al menu de figuras 2D"
                         ]).ask()
                             
                     if eleccion_poli == "1.Cuadrado":
@@ -52,8 +52,10 @@ while salir_programa == 0:
                                 ).ask())
                                 if lado <= 0:
                                     print("Ingresa un numero valido!")
+                                    continue
                             except ValueError:
                                 print("Ingrese un numero valido!")
+                                continue
                             area = lado**2
                             perimetro = lado*4
                             diagonal = lado * (2**(1/2))
@@ -95,8 +97,10 @@ while salir_programa == 0:
                                 lado = float(questionary.text("Ingrese un lado del triangulo (Permite decimales): ").ask())
                                 if lado < 0:
                                     print("Ingrese un numero valido!")
+                                    continue
                             except ValueError:
                                 print("Ingrese un numero valido!")
+                                continue
                             area = ((3**(1/2))/4)*(lado**2)
                             perimetro = lado * 3 
                             altura = ((3**(1/2))/2)*lado
@@ -152,19 +156,19 @@ while salir_programa == 0:
                             if not questionary.confirm("Quiere realizar una nueva operacion?").ask():
                                 looppenta += 1
                                                
-                    elif eleccion_poli == "6.Salir":
+                    elif eleccion_poli == "6.Salir al menu de figuras 2D":
                         salir_poli += 1
 
             elif eleccion_2d == "2.Figuras circulares":
                 salir_circu = 0
                 while salir_circu == 0:
-                    
+
                     eleccion_circu = questionary.select(
                         "Lista de figuras circulares:",
                         choices=[
                             "1.Circulo",
                             "2.Elipse",
-                            "3.Salir"
+                            "3.Salir al menu de figuras 2D"
                         ]).ask()
 
                     if eleccion_circu == "1.Circulo":
@@ -219,12 +223,11 @@ while salir_programa == 0:
                             if not questionary.confirm("Quiere realizar una nueva operacion?").ask():
                                 loopelipse += 1
                     
-                    elif eleccion_circu == "3.Salir":
+                    elif eleccion_circu == "3.Salir al menu de figuras 2D":
                         salir_circu += 1
                         
-            elif eleccion_2d == "3.Salir":
-                if questionary.confirm("Realmente quieres salir? ").ask():
-                    salir_2d += 1
+            elif eleccion_2d == "3.Salir al menu principal":
+                salir_2d += 1
                     
     elif menu == "2.Figuras 3D":
         salir_3d = 0
@@ -236,7 +239,7 @@ while salir_programa == 0:
                     "1.Cubo",
                     "2.Tetraedro",
                     "3.Esfera",
-                    "4.Salir"
+                    "4.Salir al menu principal"
                 ]
             ).ask()
 
@@ -295,10 +298,9 @@ while salir_programa == 0:
                     if not questionary.confirm("Quiere realizar una nueva operacion?").ask():
                         loopesfera += 1
                                 
-            elif eleccion_3d == "4.Salir":
-                if questionary.confirm("Realmente quieres salir? ").ask():
-                    salir_3d += 1
+            elif eleccion_3d == "4.Salir al menu principal":
+                salir_3d += 1
 
-    elif menu == "3.Salir":
+    elif menu == "3.Cerrar programa":
         if questionary.confirm("Realmente quieres salir? ").ask():
             salir_programa += 1
